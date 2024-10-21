@@ -3,6 +3,8 @@
 #include "gameGenerator.hpp"
 #include "./json.hpp"
 
+using json = nlohmann::json; // JSON-Namespace definieren
+
 /// <summary>
 /// Encode and format the game in a human-readable format
 /// </summary>

@@ -18,7 +18,7 @@ In the following the structure of the algorithm is described to create a 9 by 9 
 
 Use the following command to compile the programm:
 
-```g++ gameGenerator.cpp -o gameGenerator```
+```g++ -std=c++11 gameGenerator.cpp -o gameGenerator```
 
 ## Run
 
