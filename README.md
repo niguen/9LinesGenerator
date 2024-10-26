@@ -29,3 +29,6 @@ Use the following command to run the compiled bytecode:
 ## Future improvements
 
 In this section a number of future imprpovements is listed that can be implemented to improve the algorithm or expand its functionality.
+
+
+Please find a similar implementation of the str8ts game on [GitHub](https://github.com/daandtu/Str8ts)

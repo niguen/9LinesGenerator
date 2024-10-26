@@ -2,8 +2,29 @@
 #include <iostream>
 #include "gameGenerator.hpp"
 #include "./json.hpp"
+#include <bitset>
+
+#include <fstream>
+
 
 using json = nlohmann::json; // JSON-Namespace definieren
+
+
+/// <summary>
+/// Generate a new Str8ts game
+/// </summary>
+/// <param name="game">Field where the new game is stored</param>
+/// <param name="difficulty">Difficulty level as integer between 0 and 5, i.e. there exist 6 levels where 0 is the most difficult</param>
+/// <param name="generatorCount">Number of previous retries to generate the black game fields</param>
+/// <param name="numberGeneratorCount">Number of previous retries to generate all numbers</param>
+void generate(std::vector<Field> &game, int difficulty, int generatorCount = 0, int numberGeneratorCount = 0)
+{
+	//Increase number of retries to generate a new game
+	generatorCount++;
+
+	// Initialize game field
+	game.assign(81, Field());
+}
 
 /// <summary>
 /// Encode and format the game in a human-readable format
@@ -74,7 +95,39 @@ void printHelloWorld() {
 }
 
 int main() {
+
+	int difficulty = 0;
+
+	// create an empty field 
+	std::vector<Field> game;
+	generate(game, difficulty);
+
+	std::cout << "Here is an empty game: " << std::endl << gameToString(game) << std::endl;
+
+	// encode game
+	std::string gameEncoding = encodeGame(game);
+
+	std::cout << "This is the encoded game: " << gameEncoding << std::endl;
+
+	// save the game to json
+	// Create a JSON object
+    json jsonObject;
+    jsonObject["myStringKey"] = gameEncoding;
+
+    // Save JSON object to a file
+    std::ofstream outFile("games.json");
+    if (outFile.is_open()) {
+        outFile << jsonObject.dump(4);  // Use 4 for pretty-printed JSON with indentations
+        outFile.close();
+        std::cout << "String saved to output.json successfully!" << std::endl;
+    } else {
+        std::cerr << "Could not open the file for writing!" << std::endl;
+    }
+
+
+
+
     // Call the function to print Hello, World!
-    printHelloWorld();
+    // printHelloWorld();
     return 0;
 }
