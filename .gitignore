@@ -30,3 +30,9 @@
 *.exe
 *.out
 *.app
+
+
+*.json
+
+# Exclude the compiled binary
+gameGenerator
